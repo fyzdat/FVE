@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>tab test</title>
+
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+
+<div class="header">
+</div>
+
+<div class="row">  
+
+  <div class="main">
+    <h3>Main Content</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
+  </div>
+  
+  <div class="graph_svg">
+	<strong>Produkce a spotřeba</strong>
+	
+	<svg id="graph_01" width="1595" height="130">
+		
+	</svg> 
+	
+	<strong>Produkce a spotřeba</strong>
+	
+	<svg id="graph_06" width="1595" height="130">
+		
+	</svg> 
+	
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="column col01">
+	<strong>Výkon a spotřeba [MW]</strong>
+	<p>výkon trvalých zdrojů:<br>
+	<input id="inp_permPower_MW" onchange="acumInpOut.in_permPower_MW_Set()" type="text" value="" size="5" style="color:blue"></p>
+	<p>max. výkon sol. el.:<br>
+	<input id="inp_maxPeakSolar_MW" onchange="acumInpOut.in_maxPeakSolar_MW_Set()" type="text" value="" size="5" style="color:blue"></p>
+	<p>max. výkon větrných el.:<br>
+	<input id="inp_maxPeakWind_MW" onchange="acumInpOut.in_maxPeakWind_MW_Set()" type="text" value="" size="5" style="color:blue"></p>
+	<p>spotřeba:<br>
+	<input id="inp_cons_MW" onchange="acumInpOut.in_cons_MW_Set()" type="text" value="" size="5" style="color:blue"></p>
+  </div>
+  
+  <div class="column col02">
+	<strong>Kapacita úložiště</strong>
+	<p>kapacita ve dnech spotřeby:<br>
+	<input id="inp_totalCap_Days" onchange="acumInpOut.in_totalCap_Days_Set()" type="text" value="" size="10" style="color:blue"></p>
+	<p>celková kapacita MWh:<br>
+	<span id="inp_totalCap_MWh" style="color:blue"> aaa </span></p>
+	<p>počáteční akumulace %:<br>
+	<input id="inp_startCap_Percent" onchange="acumInpOut.in_startCap_Percent_Set()" type="text" value="" size="10" style="color:blue"></p>
+	<p>počáteční akumulace MWh:<br>
+	<span id="inp_startCap_MWh" style="color:blue"> aaa </span></p>
+  </div>
+  
+  <div class="column col03">
+	<strong>Cena úložiště</strong>
+	<p>cena za 1 MWh úložiště Kč:<br>
+	<input id="inp_priceStorageMWh_Kc" onchange="acumInpOut.in_priceStorageMWh_Kc_Set()" type="text" value="" size="15" style="color:blue"></p>
+	<p>cena úložiště Kč:<br>
+	<span id="inp_priceStorageTotal_Kc" style="color:blue"> aaa </span></p>
+	<p>životnost úložiště v letech:<br>
+	<input id="inp_storageLifeTime_years" onchange="acumInpOut.in_storageLifeTime_years_Set()" type="text" value="" size="15" style="color:blue"></p>
+	<p>amortizace Kč:<br>
+	<span id="inp_priceStoragePerYear_Kc" style="color:blue"> aaa </span></p>
+  </div>
+  
+  <div class="column col04">
+	<strong>Ceny elektřiny [Kč/MWh]</strong>
+	<p>když výroba = 2 x spotřeba:<br>
+	<input id="inp_MWhPriceProdEq2Cons_Kc" onchange="acumInpOut.in_MWhPriceProdEq2Cons_Kc_Set()" type="text" value="" size="5" style="color:blue"></p>
+	<p>když výroba = spotřeba:<br>
+	<input id="inp_MWhPriceProdEqCons_Kc" onchange="acumInpOut.in_MWhPriceProdEqCons_Kc_Set()" type="text" value="" size="5" style="color:blue"></p>
+	<p>když výroba = 0:<br>
+	<input id="inp_MWhPriceProdEqZero_Kc" onchange="acumInpOut.in_MWhPriceProdEqZero_Kc_Set()" type="text" value="" size="5" style="color:blue"></p>
+  </div>
+  
+  <div class="column col05">
+	<strong>Rentabilita úložiště za rok</strong>
+	<p>nákup elektřiny pro akumulaci Kč:<br>
+	<span id="inp_energyBuyed_Kc" style="color:blue"> aaa </span></p>
+	<p>prodej akumulované elektřiny Kč:<br>
+	<span id="inp_energySelled_Kc" style="color:blue"> aaa </span></p>
+	<p>hrubý zisk z akumulace Kč (bez zohlednění ceny úložiště):<br>
+	<span id="inp_profitPerYear_Kc" style="color:blue"> aaa </span></p>
+	<p>hrubý zisk k ceně úložiště v %:<br>
+	<span id="inp_profitPercent" style="color:blue"> aaa </span></p>
+	<p>zdražení při platbě občany Kč/kWh:<br>
+	<span id="inp_kWhPriceIncrease_Kc" style="color:blue"> aaa </span></p>
+  </div>
+  
+</div>
+
+<div class="row">
+
+  <div class="table_data">
+	<strong>Detailní přehled</strong>
+	<table id="tab1"></table>
+  </div>
+  
+  <div class="column side">
+    <strong></strong>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+  </div>
+</div>
+  
+
+    <script src="limity.js"></script>
+
+  </body>
+</html>
